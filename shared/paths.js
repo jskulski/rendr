@@ -2,6 +2,9 @@ var paths = {
 
   entryPath: '',
 
+  routesPath: 'app/routes',
+  controllerPath:'app/controllers',
+
   getPath: function(thing) {
     thing = thing || '';
     var path = this.entryPath + thing;
@@ -9,7 +12,12 @@ var paths = {
   },
 
   getRoutesPath: function() {
-    var path = this.entryPath + 'app/routes';
+    var path = this.entryPath + this.routesPath;
+    return path;
+  },
+
+  getControllerPath: function(controllerName) {
+    var path = [this.entryPath, this.controllerPath, controllerName + '_controller'].join('/');
     return path;
   }
 

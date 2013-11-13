@@ -40,19 +40,7 @@ BaseRouter.prototype.initialize = function(options) {};
 
 BaseRouter.prototype._initOptions = function(options) {
   var paths;
-
   this.options = options || {};
-  paths = this.options.paths = this.options.paths || {};
-  paths.entryPath = paths.entryPath || rendr.paths.getPath();
-
-  // TODO move these settings to rendr.paths
-  paths.controllerDir = paths.controllerDir || paths.entryPath + 'app/controllers';
-};
-
-BaseRouter.prototype.getController = function(controllerName) {
-  var controllerDir = this.options.paths.controllerDir
-    , controller = require(controllerDir + "/" + controllerName + "_controller");
-  return controller;
 };
 
 /**
@@ -60,9 +48,10 @@ BaseRouter.prototype.getController = function(controllerName) {
  * return the corresponding action function.
  */
 BaseRouter.prototype.getAction = function(route) {
-  var controller, action;
+  var controller, controllerPath, action;
   if (route.controller) {
-    controller = this.getController(route.controller);
+    controllerPath = rendr.paths.getControllerPath(route.controller);
+    controller = require(controllerPath);
     if (controller) {
       action = controller[route.action];
     }
