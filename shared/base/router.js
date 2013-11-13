@@ -22,10 +22,6 @@ function BaseRouter(options) {
 /**
  * Config
  *   - errorHandler: function to correctly handle error
- *   - paths
- *     - entryPath (required)
- *     - routes (optional)
- *     - controllerDir (optional)
  */
 BaseRouter.prototype.options = null;
 
