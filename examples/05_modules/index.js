@@ -27,10 +27,15 @@ var dataAdapterConfig = {
   }
 };
 
+var pathsPath = 'app/paths';
 /**
  * Initialize our Rendr server.
  */
 var server = rendr.createServer({
+  /**
+   * Use our own paths to tell rendr about our layout.
+   */
+  pathsPath: pathsPath,
   dataAdapterConfig: dataAdapterConfig
 });
 

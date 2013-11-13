@@ -1,10 +1,11 @@
 /**
- * Paths determines where components of an app live. It is globally accessible as:
+ * Paths determines where components of a rendr app live.
  *
- * `rendr.paths`
+ * It is globally accessible as: `rendr.paths`
  *
- * and maybe over written to suit your needs. See 05_modules in the example directory.
- * The base layout of an app follows the examples:
+ * Paths maybe overwritten to suit your project's needs. See 05_modules in the example directory.
+ *
+ * The layout this paths provides is:
  *
  * app/
  *     app.js

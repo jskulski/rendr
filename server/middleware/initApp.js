@@ -45,7 +45,8 @@ module.exports = function(appAttributes, options) {
        * Pass through `apiPath` so models and collections can properly fetch from the
        * correct path.
        */
-      apiPath: options.apiPath
+      apiPath: options.apiPath,
+      pathsPath: options.pathsPath
     });
 
     var app = new App(attributes, appOptions);

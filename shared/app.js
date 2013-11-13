@@ -45,6 +45,14 @@ module.exports = Backbone.Model.extend({
     this.templateAdapter = require(this.get('templateAdapter'));
 
     /**
+     * Initialize the paths, allowing application developers to use whichever
+     * layout they wish.
+     */
+    if (attributes.pathsPath) {
+      rendr.paths = require(rendr.paths.getPath(attributes.pathsPath));
+    }
+
+    /**
      * Instantiate the `Fetcher`, which is used on client and server.
      */
     this.fetcher = new Fetcher({

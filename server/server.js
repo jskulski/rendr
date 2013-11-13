@@ -18,6 +18,7 @@ var defaultOptions = {
   apiPath: '/api',
   appData: {},
   paths: {},
+  pathsPath: null,
   viewsPath: null,
   defaultEngine: 'js'
 };
@@ -35,6 +36,11 @@ function Server(options) {
 
   this.errorHandler = this.options.errorHandler =
     this.options.errorHandler || express.errorHandler();
+
+  // Load our paths controller to the global namespace.
+  if (this.options.pathsPath) {
+    rendr.paths = require(rendr.paths.getPath(this.options.pathsPath));
+  }
 
   this.router = new Router(this.options);
 
@@ -97,7 +103,8 @@ Server.prototype.configure = function(fn) {
    * Initialize the Rendr app, accessible at `req.rendrApp`.
    */
   this.expressApp.use(middleware.initApp(this.options.appData, {
-    apiPath: this.options.apiPath
+    apiPath: this.options.apiPath,
+    pathsPath: this.options.pathsPath
   }));
 
   /**
