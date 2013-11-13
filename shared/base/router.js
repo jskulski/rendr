@@ -43,7 +43,9 @@ BaseRouter.prototype._initOptions = function(options) {
 
   this.options = options || {};
   paths = this.options.paths = this.options.paths || {};
-  paths.entryPath = paths.entryPath || rendr.entryPath;
+  paths.entryPath = paths.entryPath || rendr.paths.getPath();
+
+  // TODO move these settings to rendr.paths
   paths.routes = paths.routes || paths.entryPath + 'app/routes';
   paths.controllerDir = paths.controllerDir || paths.entryPath + 'app/controllers';
 };
@@ -126,7 +128,7 @@ BaseRouter.prototype.route = function(pattern) {
   definitions = _.toArray(arguments).slice(1);
   route = this.parseDefinitions(definitions);
   action = this.getAction(route);
-  
+
   if (!(pattern instanceof RegExp) && pattern.slice(0, 1) !== '/') {
     pattern = "/" + pattern;
   }

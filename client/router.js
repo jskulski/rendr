@@ -8,7 +8,7 @@ BaseRouter = require('../shared/base/router');
 BaseView = require('../shared/base/view');
 
 try {
-  AppView = require(rendr.entryPath + 'app/views/app_view');
+  AppView = require(rendr.paths.getPath('app/views/app_view'));
 } catch (e) {
   AppView = require('./app_view');
 }
@@ -83,7 +83,7 @@ ClientRouter.prototype.postInitialize = noop;
 ClientRouter.prototype.addBackboneRoute = function(routeObj) {
   var handler, name, pattern, route;
 
-  // Backbone.History wants no leading slash on strings.  
+  // Backbone.History wants no leading slash on strings.
   pattern = (routeObj[0] instanceof RegExp) ? routeObj[0] : routeObj[0].slice(1);
   route = routeObj[1];
   handler = routeObj[2];

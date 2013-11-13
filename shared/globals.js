@@ -2,7 +2,8 @@ if (typeof window !== "undefined" && window !== null) {
   window.isServer = false;
   window.global = window;
   global.rendr = {
-    entryPath: ''
+    entryPath: '',
+    paths: new require('rendr/shared/paths')
   };
 } else {
   global.isServer = true;
