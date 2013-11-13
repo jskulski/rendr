@@ -9,11 +9,13 @@ Router = require('../../client/router');
 clientTestHelper = require('../helpers/client_test');
 
 routerConfig = {
-  app: new App,
-  paths: {
-    entryPath: __dirname + "/../fixtures/"
-  }
+  app: new App
+  // paths: {
+  //   entryPath: __dirname + "/../fixtures/"
+  // }
 };
+
+rendr.paths.entryPath = __dirname + "/../fixtures/";
 
 describe("client/router", function() {
 

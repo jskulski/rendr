@@ -46,7 +46,6 @@ BaseRouter.prototype._initOptions = function(options) {
   paths.entryPath = paths.entryPath || rendr.paths.getPath();
 
   // TODO move these settings to rendr.paths
-  paths.routes = paths.routes || paths.entryPath + 'app/routes';
   paths.controllerDir = paths.controllerDir || paths.entryPath + 'app/controllers';
 };
 
@@ -88,7 +87,7 @@ BaseRouter.prototype.getRedirect = function(route, params) {
  * Build route definitions based on the routes file.
  */
 BaseRouter.prototype.buildRoutes = function() {
-  var routeBuilder = require(this.options.paths.routes)
+  var routeBuilder = require(rendr.paths.getRoutesPath())
     , routes = [];
 
   function captureRoutes() {
