@@ -10,9 +10,6 @@ clientTestHelper = require('../helpers/client_test');
 
 routerConfig = {
   app: new App
-  // paths: {
-  //   entryPath: __dirname + "/../fixtures/"
-  // }
 };
 
 rendr.paths.entryPath = __dirname + "/../fixtures/";
