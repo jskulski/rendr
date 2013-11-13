@@ -433,9 +433,8 @@ module.exports = BaseView = Backbone.View.extend({
  */
 
 BaseView.getView = function(viewName) {
-  // TODO: var viewPath = rendr.paths.getViewPath(viewName);
-  // return require(viewPath);
-  return require(rendr.paths.getPath('app/views/' + viewName));
+  var viewPath = rendr.paths.getViewPath(viewName);
+  return require(viewPath);
 };
 
 BaseView.attach = function(app, parentView) {
